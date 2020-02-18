@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class FieldOfVision : MonoBehaviour
 {
+
+	[SerializeField]
 	private bool trigger;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -17,4 +20,20 @@ public class FieldOfVision : MonoBehaviour
     {
         
     }
+
+    private void OnTriggerEnter(Collider collider)
+	{
+        if(collider.gameObject.tag == "Player")
+		{
+			trigger = true;
+		}
+	}
+
+    private void OnTriggerExit(Collider collider)
+	{
+        if(collider.gameObject.tag == "Player")
+		{
+			trigger = false;
+		}
+	}
 }
